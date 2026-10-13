@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>نمونه‌کارهای ویدیو و موشن گرافیک</title>
+  <style>
+    :root {
+      --bg-color: #0f172a;
+      --card-bg: #1e293b;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent-color: #38bdf8;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      line-height: 1.6;
+      padding: 2rem 1rem;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    header h1 {
+      font-size: 2.2rem;
+      color: var(--accent-color);
+      margin-bottom: 0.5rem;
+    }
+
+    header p {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+    }
+
+    .gallery {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .card {
+      background-color: var(--card-bg);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(56, 189, 248, 0.2);
+    }
+
+    .video-thumb-container {
+      position: relative;
+      width: 100%;
+      padding-top: 56.25%; /* 16:9 Aspect Ratio */
+      background-color: #000;
+    }
+
+    .video-thumb-container video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .card-info {
+      padding: 1rem;
+    }
+
+    .card-info h3 {
+      font-size: 1.2rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .card-info p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    /* Modal / Lightbox */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(5px);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+      padding: 1rem;
+    }
+
+    .modal.active {
+      display: flex;
+    }
+
+    .modal-content {
+      position: relative;
+      max-width: 900px;
+      width: 100%;
+      background: #000;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .modal-content video {
+      width: 100%;
+      display: block;
+      max-height: 80vh;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      left: 15px;
+      color: #fff;
+      font-size: 2rem;
+      cursor: pointer;
+      z-index: 1001;
+      line-height: 1;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>نمونه‌کارها و موشن‌گرافیک‌ها</h1>
+    <p>مجموعه‌ای از پروژه‌های ویدیویی و پویانمایی</p>
+  </header>
+
+  <main class="gallery">
+
+    <!-- آیتم اول -->
+    <div class="card" onclick="openModal('videos/project1.mp4')">
+      <div class="video-thumb-container">
+        <video src="videos/project1.mp4#t=0.5" preload="metadata" muted></video>
+      </div>
+      <div class="card-info">
+        <h3>عنوان پروژه اول</h3>
+        <p>توضیح کوتاه درباره موضوع پروژه یا موشن‌گرافیک</p>
+      </div>
+    </div>
+
+    <!-- آیتم دوم -->
+    <div class="card" onclick="openModal('videos/project2.mp4')">
+      <div class="video-thumb-container">
+        <video src="videos/project2.mp4#t=0.5" preload="metadata" muted></video>
+      </div>
+      <div class="card-info">
+        <h3>عنوان پروژه دوم</h3>
+        <p>توضیح کوتاه درباره ابزارها یا سبک طراحی</p>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Modal برای پخش ویدیو -->
+  <div class="modal" id="videoModal" onclick="closeModal(event)">
+    <div class="modal-content" onclick="event.stopPropagation()">
+      <span class="close-btn" onclick="closeModal()">&times;</span>
+      <video id="modalVideo" controls autoplay></video>
+    </div>
+  </div>
+
+  <script>
+    function openModal(videoSrc) {
+      const modal = document.getElementById('videoModal');
+      const video = document.getElementById('modalVideo');
+      video.src = videoSrc;
+      modal.classList.add('active');
+    }
+
+    function closeModal() {
+      const modal = document.getElementById('videoModal');
+      const video = document.getElementById('modalVideo');
+      video.pause();
+      video.src = '';
+      modal.classList.remove('active');
+    }
+  </script>
+</body>
+</html>
