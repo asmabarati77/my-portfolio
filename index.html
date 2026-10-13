@@ -151,10 +151,10 @@
 
   <main class="gallery">
 
-    <!-- آیتم اول -->
-    <div class="card" onclick="openModal('videos/project1.mp4')">
+    <!-- ویدیو اول -->
+    <div class="card" onclick="openModal('project1.mp4')">
       <div class="video-thumb-container">
-        <video src="videos/project1.mp4#t=0.5" preload="metadata" muted></video>
+        <video src="project1.mp4#t=0.5" preload="metadata" muted></video>
       </div>
       <div class="card-info">
         <h3>عنوان پروژه اول</h3>
@@ -162,20 +162,20 @@
       </div>
     </div>
 
-    <!-- آیتم دوم -->
-    <div class="card" onclick="openModal('videos/project2.mp4')">
+    <!-- ویدیو دوم -->
+    <div class="card" onclick="openModal('project2.mp4')">
       <div class="video-thumb-container">
-        <video src="videos/project2.mp4#t=0.5" preload="metadata" muted></video>
+        <video src="project2.mp4#t=0.5" preload="metadata" muted></video>
       </div>
       <div class="card-info">
         <h3>عنوان پروژه دوم</h3>
-        <p>توضیح کوتاه درباره ابزارها یا سبک طراحی</p>
+        <p>توضیح کوتاه درباره سبک طراحی یا نرم‌افزارها</p>
       </div>
     </div>
 
   </main>
 
-  <!-- Modal برای پخش ویدیو -->
+  <!-- Modal پخش ویدیو -->
   <div class="modal" id="videoModal" onclick="closeModal(event)">
     <div class="modal-content" onclick="event.stopPropagation()">
       <span class="close-btn" onclick="closeModal()">&times;</span>
